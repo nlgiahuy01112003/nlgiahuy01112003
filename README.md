@@ -103,8 +103,8 @@ I believe that engineering is about making deliberate trade-offs to build reliab
 
 <div align="center">
 
-[![Gia Huy's GitHub Stats](https://github-readme-stats.vercel.app/api?username=nlgiahuy01112003&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)](https://github.com/anuraghazra/github-readme-stats)
-[![Gia Huy's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=nlgiahuy01112003&layout=compact&theme=tokyonight&hide_border=true&langs_count=8)](https://github.com/anuraghazra/github-readme-stats)
+[![Gia Huy's GitHub Stats](https://gh-stats.com/api?username=nlgiahuy01112003&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)](https://github.com/anuraghazra/github-readme-stats)
+[![Gia Huy's Top Languages](https://gh-stats.com/api/top-langs?username=nlgiahuy01112003&layout=compact&theme=tokyonight&hide_border=true&langs_count=8)](https://github.com/anuraghazra/github-readme-stats)
 
 </div>
 
