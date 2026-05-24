@@ -81,14 +81,18 @@ I believe that engineering is about making deliberate trade-offs to build reliab
 
 ---
 
-## 💼 Work Experience & Academic Projects
+## 💼 Work Experience
 
 ### 💻 Former IT Support / Helpdesk Intern
 **HCMC Digital Transformation Center (DXCENTER)** | *Aug 2025 – Oct 2025*
 - Handled technical troubleshooting, bug identification, and hardware maintenance for high-traffic public administration software ecosystems (`motcua.tphcm.gov.vn`, `qlvb.tphcm.gov.vn`).
 - Analyzed large data transactions, gaining firsthand experience in managing public sector infrastructure supporting thousands of daily concurrent users.
 
-### 📈 Credit Repayment Risk Prediction (Academic Project)
+---
+
+## 🎓 Academic Projects
+
+### 📈 Credit Repayment Risk Prediction
 **Python / Support Vector Machines (SVM) / Tkinter**
 - Designed a machine learning desktop application to classify credit risk based on user profiles.
 - Solved a severe data imbalance (90/10 split) using **SMOTE** (Synthetic Minority Over-sampling Technique) and optimized the SVM model using Grid Search for hyperparameter tuning.
@@ -99,7 +103,8 @@ I believe that engineering is about making deliberate trade-offs to build reliab
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=nlgiahuy01112003&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" height="180" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=nlgiahuy01112003&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" height="180" />
+[![Gia Huy's GitHub Stats](https://github-readme-stats.vercel.app/api?username=nlgiahuy01112003&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)](https://github.com/anuraghazra/github-readme-stats)
+[![Gia Huy's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=nlgiahuy01112003&layout=compact&theme=tokyonight&hide_border=true&langs_count=8)](https://github.com/anuraghazra/github-readme-stats)
 
 </div>
+
