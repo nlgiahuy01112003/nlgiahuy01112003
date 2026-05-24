@@ -81,14 +81,6 @@ I believe that engineering is about making deliberate trade-offs to build reliab
 
 ---
 
-## 🤝 Open Source & Contributions
-
-I actively contribute to high-impact open-source developer tools and AI workforce frameworks:
-- **[JobOps](https://github.com/DaKheera47/job-ops)** (#3 on GitHub Trending for TypeScript | 800+ users): Contributed to UI/UX updates, including enhancing the Job Detail Panel and optimizing multi-board scraping workflows.
-- **[AI Native Company](https://github.com/nlgiahuy01112003/ai_native_company)**: Collaborated on developing custom skills and workflow structures utilizing the KWSR (Knowledge, Workflow, Skill, Rule) framework to automate standard operating procedures (SOPs).
-
----
-
 ## 💼 Work Experience
 
 ### 💻 Former IT Support / Helpdesk Intern
