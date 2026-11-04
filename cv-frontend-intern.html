@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyen Le Gia Huy - Frontend Developer Intern</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        :root { --primary: #000; --text: #222; --muted: #555; --bg: #fff; --accent: #007766; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; font-size: 8.2pt; color: var(--text); line-height: 1.35; background: #f0f0f0; display: flex; flex-direction: column; align-items: center; padding: 20px 0; gap: 30px; }
+        .cv-page { width: 210mm; min-height: 297mm; background: #fff; padding: 10mm 13mm; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        @media print { 
+            body { background: white; padding: 0; gap: 0; display: block; font-size: 8pt; line-height: 1.32; } 
+            .cv-page { box-shadow: none; width: 100%; min-height: auto; height: auto; padding: 0; margin: 0; page-break-after: always; overflow: visible; } 
+            .cv-page:last-child { page-break-after: auto; }
+            @page { size: A4; margin: 6mm 12mm; }
+            .no-print { display: none !important; }
+        }
+
+        .header { display: flex; align-items: center; gap: 12px; margin-bottom: 7px; border-bottom: 1px solid #ccc; padding-top: 4px; padding-bottom: 6px; }
+        .header-photo { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd; }
+        .header-left { flex: 1; }
+        .header-left h1 { font-size: 18pt; font-weight: 700; color: var(--primary); text-transform: uppercase; margin: 0 0 2px 0; letter-spacing: 0; line-height: 1.25; }
+        .header-left .title { font-size: 10pt; color: var(--text); font-weight: 500; margin-bottom: 2px; }
+        .header-left .website { font-size: 8.2pt; color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+        .header-right { display: flex; flex-direction: column; gap: 2px; font-size: 8.2pt; font-weight: 500; }
+        .contact-item { display: flex; align-items: center; gap: 6px; color: var(--primary); text-decoration: none; white-space: nowrap; }
+        .contact-item i { width: 14px; text-align: center; color: var(--muted); }
+        .header-qr { width: 60px !important; height: 60px !important; border: 1px solid #ddd; padding: 2px; border-radius: 4px; object-fit: contain; }
+
+        section { margin-bottom: 4px; }
+        .section-title { font-size: 10pt; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 4px; display: flex; align-items: center; margin-top: 0; page-break-after: avoid; break-after: avoid; }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: #000; margin-left: 12px; }
+
+        .top-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 16px; margin-bottom: 5px; page-break-inside: avoid; break-inside: avoid; }
+        .summary-text { text-align: left; line-height: 1.35; }
+        .skills-table { display: grid; grid-template-columns: auto 1fr; gap: 3px 8px; font-size: 8.2pt; line-height: 1.35; }
+        .skills-table strong { color: var(--primary); white-space: nowrap; }
+
+        .row-item { display: flex; margin-bottom: 4px; }
+        .row-item:last-child { margin-bottom: 0; }
+        .row-date { width: 118px; flex-shrink: 0; font-size: 8.2pt; color: var(--muted); padding-top: 2px; padding-right: 10px; white-space: nowrap; }
+        .row-content { flex: 1; }
+        .row-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; page-break-after: avoid; break-after: avoid; }
+        .row-title { font-size: 9.7pt; font-weight: 700; color: var(--primary); }
+        .row-subtitle { font-size: 8.3pt; color: var(--accent); font-weight: 600; margin-bottom: 2px; page-break-after: avoid; break-after: avoid; }
+        .row-meta { font-size: 8pt; color: var(--muted); margin-bottom: 2px; page-break-after: avoid; break-after: avoid; }
+        .row-meta a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .row-desc { text-align: left; margin-bottom: 3px; line-height: 1.35; }
+
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 3px; margin: 2px 0 3px; page-break-after: avoid; break-after: avoid; }
+        .tag { font-size: 7pt; background: #eee; padding: 1px 6px; border-radius: 3px; color: #444; font-weight: 500; }
+
+        ul { padding-left: 0; list-style: none; margin: 0; }
+        li { margin-bottom: 0.5px; position: relative; padding-left: 10px; text-align: left; line-height: 1.35; page-break-inside: avoid; break-inside: avoid; }
+        li::before { content: "·"; position: absolute; left: 0; font-weight: bold; }
+        strong { color: var(--primary); font-weight: 600; }
+        code { font-family: inherit; font-size: 0.96em; font-weight: 500; letter-spacing: 0; background: #f1f1f1; border-radius: 2px; padding: 0 2px; overflow-wrap: anywhere; }
+
+        .page2-header { font-size: 8.2pt; color: var(--muted); margin-bottom: 10px; padding-top: 4px; padding-bottom: 5px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; }
+        .page2-header strong { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <!-- Floating Action Bar (Print / Home) -->
+    <div class="no-print" style="position: fixed; top: 16px; right: 20px; z-index: 9999; display: flex; gap: 8px; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(8px); padding: 6px 12px; border-radius: 30px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.15);">
+        <a href="/" style="display: flex; align-items: center; gap: 6px; color: #cbd5e1; text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 4px 10px; border-radius: 20px;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#cbd5e1'">
+            <i class="fa-solid fa-arrow-left"></i> Home
+        </a>
+        <button onclick="window.print()" style="display: flex; align-items: center; gap: 6px; background: #00c851; color: #fff; border: none; font-size: 0.8rem; font-weight: 600; padding: 5px 12px; border-radius: 20px; cursor: pointer;" onmouseover="this.style.background='#00b348'" onmouseout="this.style.background='#00c851'">
+            <i class="fa-solid fa-print"></i> Print / Save PDF (A4)
+        </button>
+    </div>
+
+    <!-- ==================== PAGE 1 ==================== -->
+    <div class="cv-page">
+        <header class="header">
+            <img src="profile-photo.jpg" alt="Nguyen Le Gia Huy" class="header-photo">
+            <div class="header-left">
+                <h1>NGUYEN LE GIA HUY</h1>
+                <div class="title">Frontend Developer Intern / Software Interface Engineer</div>
+                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 4px;">
+                    <a href="https://linkedin.com/in/nlgiahuy" class="website" target="_blank"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/nlgiahuy</a>
+                    <a href="https://nguyenlegiahuy-portfolio.vercel.app" class="website" target="_blank"><i class="fa-solid fa-globe"></i> nguyenlegiahuy-portfolio.vercel.app</a>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="tel:+84934893967" class="contact-item"><i class="fa-solid fa-phone"></i> (+84) 934 893 967</a>
+                <a href="https://github.com/nlgiahuy01112003" class="contact-item"><i class="fa-brands fa-github"></i> github.com/nlgiahuy01112003</a>
+                <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Ho Chi Minh City</span>
+                <a href="mailto:Job.nlgiahuy@gmail.com" class="contact-item"><i class="fa-solid fa-envelope"></i> Job.nlgiahuy@gmail.com</a>
+            </div>
+            <img src="qr-github.png" alt="QR Code" class="header-qr">
+        </header>
+
+        <div class="top-grid">
+            <div>
+                <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+                <div class="summary-text">
+                    Software Engineering graduate specializing in <strong>Modern Frontend Architecture, Web Performance Optimization &amp; User Experience (UI/UX)</strong>.
+                    Hands-on experience developing responsive web and mobile applications with <strong>Next.js App Router, React, Flutter, Tailwind CSS, and TypeScript Strict Mode</strong>.
+                    Proven expertise in client-side Edge AI with <strong>TensorFlow.js (WebGL acceleration)</strong>, Core Web Vitals optimization (CLS = 0, Lighthouse 95+), scientific LaTeX formula rendering with <strong>MathJax</strong>, zero-asset audio synthesis with <strong>Native Web Audio API</strong>, reactive state management (<strong>Zustand, Riverpod</strong>), and client security (<strong>JWT, OAuth 2.0, RBAC, XSS Sanitization</strong>).
+                    <strong>Available for full-time internship and employment.</strong>
+                </div>
+            </div>
+            <div>
+                <h2 class="section-title">FRONTEND SKILLS</h2>
+                <div class="skills-table">
+                    <strong>Languages:</strong>
+                    <span>TypeScript, JavaScript, Dart, HTML5/CSS3, Python, SQL</span>
+
+                    <strong>Frontend &amp; Mobile:</strong>
+                    <span>Next.js App Router, React, Flutter, Tailwind CSS, SCSS, Framer Motion, PWA</span>
+                    
+                    <strong>State &amp; Client AI:</strong>
+                    <span>Zustand, Riverpod, TanStack Query, TensorFlow.js (WebGL), kuromoji.js, MathJax, Web Audio API</span>
+                    
+                    <strong>Quality &amp; Tooling:</strong>
+                    <span>Playwright E2E, Jest, Figma, WCAG 2.1 AA, Lighthouse, Git, Vercel, REST/Socket.IO</span>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <h2 class="section-title">FEATURED PROJECTS</h2>
+            
+            <!-- 1. HyperGlot -->
+            <div class="row-item">
+                <div class="row-date">03/2026 – Present</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">HyperGlot — AI Japanese Learning Ecosystem &amp; Monorepo (Next.js &amp; Flutter)</span>
+                    </div>
+                    <div class="row-meta">
+                        Role: <strong>Lead Frontend / Mobile Architect</strong> | Monorepo: <a href="https://github.com/nlgiahuy01112003/HyperGlot">github.com/nlgiahuy01112003/HyperGlot</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Next.js</span> <span class="tag">Flutter</span> <span class="tag">Riverpod</span> <span class="tag">TanStack Table</span> <span class="tag">Recharts</span> <span class="tag">TensorFlow.js (WebGL)</span> <span class="tag">Playwright</span> <span class="tag">WCAG 2.1 AA</span>
+                    </div>
+                    <div class="row-desc">
+                        Enterprise-grade multi-platform Japanese learning platform featuring a Next.js learner portal, Admin Dashboard, Flutter Mobile App, and Chrome Extension under a Zero-Cost API strategy.
+                    </div>
+                    <ul>
+                        <li><strong>Edge AI &amp; Client-Side NLP (Zero-Cost API):</strong> Deployed local kanji stroke recognition using TensorFlow.js (WebGL hardware acceleration) and kuromoji.js tokenization directly inside the browser, eliminating 100% of network latency and cloud API costs.</li>
+                        <li><strong>Turborepo Monorepo Multi-Platform UI:</strong> Engineered <code>apps/web</code> (Next.js), <code>apps/admin</code> (TanStack Table &amp; Recharts analytics), and Manifest V3 Chrome Extension sharing design tokens and strict type contracts.</li>
+                        <li><strong>Mobile Offline-First &amp; SRS Review:</strong> Built a Flutter mobile application with Riverpod StateNotifier and local Isar DB, delivering silky-smooth 60 FPS offline flashcard reviews.</li>
+                        <li><strong>Accessibility &amp; Cross-Browser E2E Testing:</strong> Complied with international WCAG 2.1 AA accessibility standards (keyboard/screen reader support) and built automated Playwright E2E suites covering learner journeys.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2. TechStore -->
+            <div class="row-item">
+                <div class="row-date">09/2025 – 03/2026</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">TechStore (Vanfio) — Next.js E-Commerce Storefront &amp; UX Optimization (React)</span>
+                    </div>
+                    <div class="row-meta">
+                        Role: <strong>Frontend / UI Engineer</strong> | Demo: <a href="https://website-for-aunt.vercel.app">website-for-aunt.vercel.app</a> | Source: <a href="https://github.com/nlgiahuy01112003/techstore">github.com/nlgiahuy01112003/techstore</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Next.js</span> <span class="tag">React</span> <span class="tag">TypeScript Strict</span> <span class="tag">Zustand</span> <span class="tag">SCSS</span> <span class="tag">Framer Motion</span> <span class="tag">Spotlight Search</span> <span class="tag">Lighthouse 95+</span>
+                    </div>
+                    <div class="row-desc">
+                        Production electronics e-commerce storefront spanning 27 responsive routes, reactive state orchestration, and fluid 60 FPS interactions.
+                    </div>
+                    <ul>
+                        <li><strong>Core Web Vitals &amp; Render Tuning:</strong> Eliminated client hydration waterfalls and Cumulative Layout Shift (CLS = 0), earning <strong>95+ Google Lighthouse scores</strong> across low-tier mobile devices.</li>
+                        <li><strong>Reactive State Architecture (Zustand):</strong> Designed modular Zustand stores (auth, cart, compare, recently viewed, live chat) with localStorage persistence and an interactive 60 FPS cart drawer.</li>
+                        <li><strong>Spotlight Search &amp; Keyboard UX:</strong> Built keyboard-accessible Spotlight Search (Ctrl/Cmd+K) with a 350ms debounce, SKU indexing, VI/EN/ZH synonym suggestions, and sub-50ms query resolution.</li>
+                        <li><strong>Client Defense &amp; RBAC Route Guards:</strong> Enforced client-side security with rotating JWTs, RBAC Route Guards across 27 routes, strict XSS sanitization, and Workbox PWA offline asset caching.</li>
+                        <li><strong>Frictionless Checkout &amp; MoMo UX:</strong> Engineered a fluid checkout workflow with duplicate click locking, automated 10-minute voucher reservation countdowns, and real-time MoMo IPN visual indicators.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== PAGE 2 ==================== -->
+    <div class="cv-page">
+        <div class="page2-header">
+            <span><strong>NGUYEN LE GIA HUY</strong> — Frontend Developer Intern / Software Interface Engineer</span>
+            <span>Page 2 of 2</span>
+        </div>
+
+        <section>
+            <h2 class="section-title">OTHER CORE PROJECTS</h2>
+
+            <!-- 3. AI Mock Exam Platform -->
+            <div class="row-item">
+                <div class="row-date">08/2026 – 09/2026</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">AI Mock Exam Platform — SFIA L3-4 AI Assessment Engine (Next.js, Pyodide &amp; LaTeX)</span>
+                    </div>
+                    <div class="row-meta">
+                        Role: <strong>Frontend / UI Developer</strong> | Demo: <a href="https://nlgiahuy01112003.github.io/ai-exam-live/">ai-exam-live</a> | Source: <a href="https://github.com/nlgiahuy01112003/ai-exam-live">GitHub</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Next.js</span> <span class="tag">Pyodide WebAssembly</span> <span class="tag">Tailwind CSS</span> <span class="tag">MathJax (LaTeX)</span> <span class="tag">Native Web Audio API</span> <span class="tag">Gemini AI Mentor</span>
+                    </div>
+                    <ul>
+                        <li><strong>In-Browser Python Sandbox &amp; MathJax:</strong> Integrated <strong>Pyodide WebAssembly</strong> to run candidate Python/NumPy code directly in the browser alongside <strong>MathJax</strong> LaTeX rendering across <strong>1,020+ questions</strong> without frame drops.</li>
+                        <li><strong>Zero-Asset Audio Synthesis (Web Audio API):</strong> Synthesized interactive UI sound effects (click, correct chime, timer alarm) via Native Web Audio API, <strong>saving 100% of external audio asset payload</strong>.</li>
+                        <li><strong>Pro Exam Room Experience:</strong> Crafted a distraction-free UI with Dark/Light theme toggle, hotkey navigation (1-4 answers, F flag question, Enter next), visual progress indicators, and an AI Smart Mentor assistant.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4. POMI Milk Tea -->
+            <div class="row-item">
+                <div class="row-date">03/2024 – Present</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">POMI Milk Tea — Real-Time F&amp;B Management Interface (React &amp; Maps)</span>
+                    </div>
+                    <div class="row-meta">
+                        Role: <strong>Frontend Developer</strong> | Source: <a href="https://github.com/nlgiahuy01112003/pomi_web">github.com/nlgiahuy01112003/pomi_web</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">React</span> <span class="tag">Sass</span> <span class="tag">TanStack Query</span> <span class="tag">Socket.IO</span> <span class="tag">Leaflet / Goong.io</span> <span class="tag">Flutter</span> <span class="tag">Cloudinary</span>
+                    </div>
+                    <ul>
+                        <li><strong>Sub-Second Real-Time DOM Updates:</strong> Engineered a kitchen display dashboard binding incoming Socket.IO payloads directly into React state under 800ms without costly full DOM tree reconciliations.</li>
+                        <li><strong>Interactive Geospatial Mapping:</strong> Integrated Leaflet and Goong.io API to visualize store branches and automatically compute delivery radius based on real-time customer GPS coordinates.</li>
+                        <li><strong>Low-End POS Tablet Optimization:</strong> Applied route-level code splitting and Cloudinary image optimization, ensuring instant POS touch interactions on budget tablets.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 5. OptiBot RAG System (KB-Harvest) -->
+            <div class="row-item">
+                <div class="row-date">06/2026 – 07/2026</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">OptiBot RAG System (KB-Harvest) — Grounded AI Assistant CLI &amp; RAG Knowledge Pipeline</span>
+                    </div>
+                    <div class="row-meta">
+                        Role: <strong>Python / AI Engineer</strong> | Source: <a href="https://github.com/nlgiahuy01112003/kb-harvest">github.com/nlgiahuy01112003/kb-harvest</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span> <span class="tag">Google Gemini API</span> <span class="tag">BeautifulSoup4</span> <span class="tag">Markdownify</span> <span class="tag">Docker</span> <span class="tag">GitHub Actions</span>
+                    </div>
+                    <ul>
+                        <li><strong>Token-Efficient Content Processing:</strong> Pipeline scrapes Zendesk Help Center documentation, transforming raw HTML into clean Markdown structure (saving &gt; 40% LLM context tokens).</li>
+                        <li><strong>Grounded Knowledge Retrieval:</strong> Configured Gemini File Search RAG to deliver accurate technical answers via terminal with source URL citations; automated via <strong>GitHub Actions cron (02:00 UTC)</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section>
+            <h2 class="section-title">EDUCATION</h2>
+            <div class="row-item">
+                <div class="row-date">09/2021 – 03/2026</div>
+                <div class="row-content">
+                    <div class="row-header" style="flex-direction: column; align-items: flex-start; gap: 2px;">
+                        <span class="row-title">Engineer's Degree in Information Technology (Software Engineering)</span>
+                        <span style="font-size: 8.8pt; font-weight: 600; color: var(--muted);">HUTECH University — GPA: 2.86/4.0</span>
+                    </div>
+                    <ul>
+                        <li><strong>Core foundation:</strong> Data structures &amp; algorithms, object-oriented programming (OOP), relational databases, operating systems, computer networks, software architecture, and automated testing.</li>
+                        <li><strong>Frontend practice:</strong> Developed responsive web and mobile interfaces with emphasis on interaction flows, API integration, UI testing, and Git collaboration.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section>
+            <h2 class="section-title">CERTIFICATIONS &amp; LANGUAGES</h2>
+            <div class="row-item">
+                <div class="row-date"></div>
+                <div class="row-content">
+                    <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5px 12px;">
+                        <li><strong>CEFR B1 English — HUTECH:</strong> General English Test at Intermediate Level; issued Dec 4, 2025.</li>
+                        <li><strong>Udemy — Full-Stack Web Development Bootcamp:</strong> Dr. Angela Yu; React, Node.js, Express, REST APIs.</li>
+                        <li><strong>Udemy — Flutter Development Bootcamp with Dart:</strong> Dr. Angela Yu; Dart OOP, Flutter State Management &amp; APIs.</li>
+                        <li><strong>Udemy — 100 Days of Code™ Python Pro Bootcamp:</strong> Dr. Angela Yu; Python OOP, Web Scraping, Automation.</li>
+                        <li><strong>Communication &amp; Teamwork — HUTECH:</strong> Issued Apr 16, 2025; technical problem solving and cross-team collaboration.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORK EXPERIENCE -->
+        <section>
+            <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+            <div class="row-item">
+                <div class="row-date">12/2025 – 06/2026</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">IT Helpdesk / Manual Tester &amp; System Deployment</span>
+                    </div>
+                    <div class="row-subtitle">EMPOWER SC</div>
+                    <ul>
+                        <li>Supported stability of the <strong>Dimchan All-in-One</strong> POS/ERP ecosystem across F&amp;B/retail businesses; maintained over 95% on-site resolution.</li>
+                        <li>Executed end-to-end manual testing on web and mobile releases; documented structured defect tickets with reproduction logs to accelerate bug triage.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row-item">
+                <div class="row-date">08/2025 – 10/2025</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">IT Support &amp; System Deployment Specialist (Project Contract)</span>
+                    </div>
+                    <div class="row-subtitle">HCMC Digital Transformation Center (DXCENTER)</div>
+                    <ul>
+                        <li><strong>Business Process Training (First 2 Weeks):</strong> Recruited for web technical expertise under a municipal digital project; mastered end-to-end workflows of 2 public portals (motcua.tphcm.gov.vn, qlvb.tphcm.gov.vn).</li>
+                        <li><strong>Field Stationed at Binh Khanh Ward (1.5 Months):</strong> Directly trained civil servants and citizens on both portals; handled user inquiries, reproduced edge-case bugs, and dispatched structured bug reports to L2 Developers.</li>
+                        <li><strong>Hardware, Networking &amp; Digital Signatures:</strong> Troubleshot PC hardware, office LAN networks, and configured digital authentication/signatures; fulfilled deployment contract milestones.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

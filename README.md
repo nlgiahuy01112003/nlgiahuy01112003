@@ -19,7 +19,7 @@
 - 💼 Practical IT operations experience at **EMPOWER SC** (Dimchan POS/ERP) and **HCMC Digital Transformation Center (DXCENTER)**.
 - ⛩️ Creator of **HyperGlot** — an enterprise Japanese learning monorepo (Turborepo) with edge AI (TensorFlow.js WebGL), native `pgvector` semantic search, and offline-first mobile sync (Flutter + Isar DB).
 - 🛒 Creator of **TechStore (Vanfio)** — a high-concurrency electronics e-commerce platform (Next.js App Router, React, NestJS, PostgreSQL, Prisma ORM, Redis, `SELECT FOR UPDATE` locking, and MoMo webhook idempotency).
-- 🧠 Creator of **AI Mock Exam Platform (v2)** — a full-stack SFIA Level 3–4 AI Engineer assessment engine (Next.js App Router, NestJS, Pyodide WASM WebAssembly in-browser Python sandbox, Gemini AI Code Grader, Neon PostgreSQL Serverless, and 1,020+ standardized questions).
+- 🧠 Creator of **AI Mock Exam Platform** — a full-stack SFIA Level 3–4 AI Engineer assessment engine (Next.js App Router, NestJS, Pyodide WebAssembly in-browser Python sandbox, Gemini AI Code Grader, Neon PostgreSQL Serverless, and 1,020+ standardized questions).
 - 🤖 Creator of **OptiBot RAG System (KB-Harvest)** — an automated documentation ETL & grounded RAG assistant (Python, Zendesk API, SHA-256 delta sync saving ~85% uploads, Gemini File Search, Docker, and GitHub Actions cron).
 - 🧋 Creator of **POMI Milk Tea** — a real-time F&B ordering system (React, Sass, Express.js, PostgreSQL pool, Socket.IO sub-800ms push, and reconnection deduplication eliminating ghost orders).
 - 🤝 Experienced in **Agile/Scrum** environments, strict TypeScript typing, Playwright E2E testing, WCAG 2.1 AA accessibility, and defense-in-depth security (JWT, TOTP MFA, RBAC).
@@ -47,7 +47,7 @@ I approach software engineering with an emphasis on deliberate architectural tra
 1. **End-to-End Type Safety**: I enforce unified TypeScript types from database schemas (via Prisma ORM) through backend DTOs to frontend clients in monorepos. API contracts never break silently during schema migrations.
 2. **Edge AI & Zero-Cost NLP Strategy**: In **HyperGlot**, kanji stroke recognition runs client-side via **TensorFlow.js with WebGL acceleration**, and Japanese tokenization runs via **kuromoji.js** in-browser. This achieves zero network roundtrip latency and completely avoids cloud AI inference costs.
 3. **Pessimistic Concurrency Control**: In **TechStore**, high-concurrency flash sales use PostgreSQL transactions with row-level locks (**`SELECT FOR UPDATE`**) to eliminate race conditions and prevent overselling items, combined with Redis caching and HMAC-SHA256 idempotent webhook processing.
-4. **In-Browser WASM Sandbox & Dual-Mode Resilience**: In **AI Mock Exam Platform (v2)**, candidate Python code executes inside a client-side **Pyodide WASM WebAssembly sandbox** paired with a **Gemini AI Code Grader** on **NestJS** and **Neon PostgreSQL Serverless** (1,020+ SFIA Level 3–4 questions) with offline fallback and **Native Web Audio API** synthesis.
+4. **In-Browser WASM Sandbox & Dual-Mode Resilience**: In **AI Mock Exam Platform**, candidate Python code executes inside a client-side **Pyodide WebAssembly sandbox** paired with a **Gemini AI Code Grader** on **NestJS** and **Neon PostgreSQL Serverless** (1,020+ SFIA Level 3–4 questions) with offline fallback and **Native Web Audio API** synthesis.
 5. **Delta Synchronization in RAG**: In **OptiBot RAG (KB-Harvest)**, daily document scraping compares SHA-256 hashes against `state.json` to ingest only altered articles into Gemini File Search, cutting daily upload volume by **~85%** and saving 40%+ LLM context tokens through HTML-to-Markdown cleaning.
 6. **Offline-First Mobile Architecture**: In **HyperGlot Mobile**, Flutter is paired with **Isar DB** local caching to allow instant, zero-latency spaced repetition (SRS) reviews without requiring an active internet connection.
 
@@ -78,7 +78,7 @@ I approach software engineering with an emphasis on deliberate architectural tra
 
 ---
 
-### 🧠 [AI Mock Exam Platform (v2) — SFIA Level 3–4 Assessment Engine](https://github.com/nlgiahuy01112003/ai-exam-live)
+### 🧠 [AI Mock Exam Platform — SFIA Level 3–4 Assessment Engine](https://github.com/nlgiahuy01112003/ai-exam-live)
 > Full-stack AI Engineering & Data Science assessment platform (Next.js App Router + NestJS) based on the SFIA Level 3–4 international standard.
 > 🌐 **Live Demo:** [nlgiahuy01112003.github.io/ai-exam-live](https://nlgiahuy01112003.github.io/ai-exam-live/)
 

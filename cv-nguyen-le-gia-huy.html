@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyen Le Gia Huy - Software Engineer / Full-Stack & AI Systems</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        :root { --primary: #000; --text: #222; --muted: #555; --bg: #fff; --accent: #0055aa; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; font-size: 8pt; line-height: 1.32; color: var(--text); background: #f0f0f0; display: flex; flex-direction: column; align-items: center; padding: 20px 0; gap: 30px; }
+        .cv-page { width: 210mm; min-height: 297mm; background: #fff; padding: 10mm 13mm; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        @media print { 
+            body { background: white; padding: 0; gap: 0; display: block; font-size: 8pt; line-height: 1.32; } 
+            .cv-page { box-shadow: none; width: 100%; min-height: auto; height: auto; padding: 0; margin: 0; page-break-after: always; overflow: visible; } 
+            .cv-page:last-child { page-break-after: auto; }
+            .header { padding-top: 4px; }
+            .header-left h1 { padding-top: 2px; }
+            .page2-header { padding-top: 4px; }
+            @page { size: A4; margin: 6mm 12mm; }
+            .no-print { display: none !important; }
+        }
+
+        /* Header */
+        .header { display: flex; align-items: center; gap: 12px; margin-bottom: 7px; border-bottom: 1px solid #ccc; padding-top: 2px; padding-bottom: 6px; }
+        .header-photo { width: 68px; height: 68px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd; }
+        .header-left { flex: 1; }
+        .header-left h1 { font-size: 17pt; font-weight: 700; color: var(--primary); text-transform: uppercase; margin: 0 0 2px 0; letter-spacing: 0; line-height: 1.25; }
+        .header-left .title { font-size: 9.8pt; color: var(--text); font-weight: 600; margin-bottom: 2px; }
+        .header-left .website { font-size: 8.2pt; color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+        .header-right { display: flex; flex-direction: column; gap: 2px; font-size: 8.2pt; font-weight: 500; }
+        .contact-item { display: flex; align-items: center; gap: 6px; color: var(--primary); text-decoration: none; white-space: nowrap; }
+        .contact-item i { width: 14px; text-align: center; color: var(--muted); }
+        .header-qr { width: 60px !important; height: 60px !important; border: 1px solid #ddd; padding: 2px; border-radius: 4px; object-fit: contain; }
+
+        /* Sections */
+        section { margin-bottom: 4px; }
+        .section-title { font-size: 9.8pt; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 4px; display: flex; align-items: center; margin-top: 0; page-break-after: avoid; break-after: avoid; }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: #000; margin-left: 10px; }
+
+        /* Top Grid (Summary + Skills) */
+        .top-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 14px; margin-bottom: 5px; page-break-inside: avoid; break-inside: avoid; }
+        .summary-text { text-align: left; line-height: 1.35; font-size: 8.2pt; }
+
+        /* Skills Grid */
+        .skills-table { display: grid; grid-template-columns: auto 1fr; gap: 2.5px 8px; font-size: 8.2pt; line-height: 1.35; }
+        .skills-table strong { color: var(--primary); white-space: nowrap; font-weight: 600; }
+
+        /* Row Layout (for projects/experience/edu) */
+        .row-item { display: flex; margin-bottom: 4px; }
+        .row-item:last-child { margin-bottom: 0; }
+        .row-date { width: 115px; flex-shrink: 0; font-size: 8.2pt; color: var(--muted); padding-top: 1px; white-space: nowrap; }
+        .row-content { flex: 1; }
+        .row-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; page-break-after: avoid; break-after: avoid; }
+        .row-title { font-size: 9.6pt; font-weight: 700; color: var(--primary); }
+        .row-subtitle { font-size: 8.3pt; color: var(--accent); font-weight: 600; margin-bottom: 2px; page-break-after: avoid; break-after: avoid; }
+        .row-meta { font-size: 8pt; color: var(--muted); margin-bottom: 2px; page-break-after: avoid; break-after: avoid; }
+        .row-meta a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .row-desc { text-align: left; margin-bottom: 3px; line-height: 1.35; font-size: 8.2pt; }
+
+        /* Tech Tags */
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 3px; margin: 2px 0 3px 0; page-break-after: avoid; break-after: avoid; }
+        .tag { font-size: 7pt; background: #eee; padding: 1px 6px; border-radius: 3px; color: #444; font-weight: 500; }
+
+        /* Lists */
+        ul { padding-left: 0; list-style: none; margin: 0; }
+        li { margin-bottom: 1px; position: relative; padding-left: 10px; text-align: left; page-break-inside: avoid; break-inside: avoid; line-height: 1.35; }
+        li::before { content: "·"; position: absolute; left: 0; font-weight: bold; }
+        strong { color: var(--primary); font-weight: 600; }
+        code { font-family: inherit; font-size: 0.96em; font-weight: 500; background: #f1f1f1; border-radius: 2px; padding: 0 2px; }
+
+        /* Page 2 Header */
+        .page2-header { font-size: 8.2pt; color: var(--muted); margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; }
+        .page2-header strong { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <!-- Floating Action Bar -->
+    <div class="no-print" style="position: fixed; top: 16px; right: 20px; z-index: 9999; display: flex; gap: 8px; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(8px); padding: 6px 12px; border-radius: 30px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.15);">
+        <a href="/" style="display: flex; align-items: center; gap: 6px; color: #cbd5e1; text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 4px 10px; border-radius: 20px;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#cbd5e1'">
+            <i class="fa-solid fa-arrow-left"></i> Home
+        </a>
+        <button onclick="window.print()" style="display: flex; align-items: center; gap: 6px; background: #00c851; color: #fff; border: none; font-size: 0.8rem; font-weight: 600; padding: 5px 12px; border-radius: 20px; cursor: pointer;" onmouseover="this.style.background='#00b348'" onmouseout="this.style.background='#00c851'">
+            <i class="fa-solid fa-print"></i> Print / Save PDF (A4)
+        </button>
+    </div>
+
+    <!-- ==================== PAGE 1 ==================== -->
+    <div class="cv-page">
+        <!-- HEADER -->
+        <header class="header">
+            <img src="profile-photo.jpg" alt="Nguyen Le Gia Huy" class="header-photo">
+            <div class="header-left">
+                <h1>NGUYEN LE GIA HUY</h1>
+                <div class="title">Software Engineer / Full-Stack &amp; AI Systems</div>
+                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 3px;">
+                    <a href="https://linkedin.com/in/nlgiahuy" class="website" target="_blank"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/nlgiahuy</a>
+                    <a href="https://nguyenlegiahuy-portfolio.vercel.app" class="website" target="_blank"><i class="fa-solid fa-globe"></i> nguyenlegiahuy-portfolio.vercel.app</a>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="tel:+84934893967" class="contact-item"><i class="fa-solid fa-phone"></i> (+84) 934 893 967</a>
+                <a href="https://github.com/nlgiahuy01112003" class="contact-item"><i class="fa-brands fa-github"></i> github.com/nlgiahuy01112003</a>
+                <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Ho Chi Minh City, VN</span>
+                <a href="mailto:Job.nlgiahuy@gmail.com" class="contact-item"><i class="fa-solid fa-envelope"></i> Job.nlgiahuy@gmail.com</a>
+            </div>
+            <img src="qr-github.png" alt="QR Code" class="header-qr">
+        </header>
+
+        <!-- SUMMARY + SKILLS -->
+        <div class="top-grid">
+            <div>
+                <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+                <div class="summary-text">
+                    Software Engineering graduate from HUTECH specialized in <strong>Full-Stack Architecture, Distributed Systems &amp; AI/RAG Integration</strong>.
+                    Hands-on experience architecting enterprise monorepos, microservices, row-level concurrency locking, and offline-first mobile synchronization.
+                    Proficient in <strong>Next.js, NestJS, Flutter/Isar, PostgreSQL (Neon pgvector), Redis, Docker, and Google Gemini API</strong>.
+                    <strong>Open to Internship and Full-Time Software Engineering opportunities.</strong>
+                </div>
+            </div>
+            <div>
+                <h2 class="section-title">TECHNICAL SKILLS</h2>
+                <div class="skills-table">
+                    <strong>Languages:</strong>
+                    <span>TypeScript, JavaScript, Dart, Python, SQL, C#, Java, HTML5/CSS3</span>
+
+                    <strong>Frontend &amp; Mobile:</strong>
+                    <span>Next.js App Router, React, Flutter, Tailwind CSS, SCSS, Zustand</span>
+                    
+                    <strong>Backend &amp; Database:</strong>
+                    <span>NestJS, Express.js, PostgreSQL (pgvector), Prisma ORM, Redis, Socket.IO</span>
+                    
+                    <strong>AI &amp; DevOps:</strong>
+                    <span>Gemini API (RAG), TensorFlow.js (WebGL), Docker, Nginx, Playwright E2E, CI/CD</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FEATURED PROJECTS (FLAGSHIP) -->
+        <section>
+            <h2 class="section-title">FEATURED PROJECTS</h2>
+            
+            <!-- 1. HyperGlot -->
+            <div class="row-item">
+                <div class="row-date">03/2026 – Present</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">HyperGlot — AI-Driven Japanese Language Learning Ecosystem (Monorepo)</span>
+                    </div>
+                    <div class="row-meta">
+                        Role: <strong>Lead Full-Stack / Mobile Architect</strong> | Monorepo: <a href="https://github.com/nlgiahuy01112003/HyperGlot">github.com/nlgiahuy01112003/HyperGlot</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Turborepo</span> <span class="tag">Next.js</span> <span class="tag">NestJS</span> <span class="tag">Flutter</span> <span class="tag">Isar DB</span> <span class="tag">Neon pgvector</span> <span class="tag">TensorFlow.js</span> <span class="tag">Playwright</span> <span class="tag">Docker</span>
+                    </div>
+                    <div class="row-desc">
+                        Enterprise-grade Japanese language ecosystem for JLPT N5-N1 learners: learner web portal, content admin, offline mobile client, and Chrome extension under a strict Zero-Cost API Strategy.
+                    </div>
+                    <ul>
+                        <li><strong>Turborepo Monorepo Architecture:</strong> Integrated <code>apps/web</code> (Next.js), <code>apps/admin</code> (TanStack Table &amp; Recharts), <code>apps/mobile</code> (Flutter/Riverpod), <code>apps/api</code> (NestJS), and <code>packages/database</code> (Prisma) with shared type contracts.</li>
+                        <li><strong>Edge AI &amp; Zero-Cost NLP:</strong> Implemented kanji stroke recognition using TensorFlow.js with WebGL hardware acceleration and client-side morphological tokenization via kuromoji.js — eliminating cloud latency and third-party API costs entirely.</li>
+                        <li><strong>Semantic Vector Search:</strong> Replaced costly managed vector databases with native PostgreSQL <code>pgvector</code> extension on Neon Serverless for semantic question indexing and retrieval.</li>
+                        <li><strong>Offline-First Mobile SRS:</strong> Built local Isar DB caching on Flutter, allowing students to study spaced-repetition (SRS) flashcards smoothly without internet; synced state asynchronously upon reconnect.</li>
+                        <li><strong>Quality Assurance &amp; Security:</strong> Authored 60+ automated test cases, Playwright E2E cross-browser suite, achieved WCAG 2.1 AA accessibility compliance, and passed OWASP Top 10 security audits.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2. TechStore (Vanfio) -->
+            <div class="row-item">
+                <div class="row-date">09/2025 – 03/2026</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">TechStore (Vanfio) — Concurrency-Controlled Electronics E-Commerce</span>
+                    </div>
+                    <div class="row-meta">
+                        Role: <strong>Full-Stack Developer</strong> | Demo: <a href="https://website-for-aunt.vercel.app">website-for-aunt.vercel.app</a> | Source: <a href="https://github.com/nlgiahuy01112003/techstore">github.com/nlgiahuy01112003/techstore</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Next.js</span> <span class="tag">React</span> <span class="tag">NestJS</span> <span class="tag">PostgreSQL</span> <span class="tag">Prisma ORM</span> <span class="tag">Redis</span> <span class="tag">Socket.IO</span> <span class="tag">MoMo</span> <span class="tag">Docker Compose</span>
+                    </div>
+                    <div class="row-desc">
+                        Production electronics commerce platform featuring Next.js storefront, NestJS REST API, Socket.IO live support gateway, and strict inventory protection.
+                    </div>
+                    <ul>
+                        <li><strong>Concurrency Control &amp; Row-Level Locking:</strong> Enforced PostgreSQL <code>SELECT FOR UPDATE</code> locks inside database transactions, guaranteeing zero overselling when multiple customers checkout the last item concurrently.</li>
+                        <li><strong>PostgreSQL-Native Trigram Search (pg_trgm):</strong> Implemented full-text ranking and trigram similarity with VI/EN/ZH synonym expansion, eliminating Meilisearch RAM footprint with sub-50ms search latency.</li>
+                        <li><strong>Idempotent Payment Webhooks:</strong> Verified MoMo/VNPay webhooks with HMAC-SHA256 signatures backed by idempotency keys, preventing duplicate financial transactions under network retries.</li>
+                        <li><strong>Performance Optimization &amp; Caching:</strong> Deployed Redis caching for session tokens and high-traffic catalogs, reducing API latency by 45%; achieved 95+ Google Lighthouse score (CLS = 0).</li>
+                        <li><strong>Multi-Layer Defense-in-Depth:</strong> Guarded by rotating JWT sessions, TOTP MFA for staff, RBAC access guards, strict DTO ValidationPipe, and Helmet brute-force/DDoS rate limiting.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== PAGE 2 ==================== -->
+    <div class="cv-page">
+        <div class="page2-header">
+            <span><strong>NGUYEN LE GIA HUY</strong> — Software Engineer / Full-Stack &amp; AI Systems</span>
+            <span>Page 2 / 2</span>
+        </div>
+
+        <!-- OTHER CORE PROJECTS -->
+        <section>
+            <h2 class="section-title">OTHER CORE PROJECTS</h2>
+
+            <!-- 3. AI Mock Exam Platform -->
+            <div class="row-item">
+                <div class="row-date">08/2026 – 09/2026</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">AI Mock Exam Platform — SFIA Level 3-4 Assessment Platform</span>
+                    </div>
+                    <div class="row-meta">
+                        Role: <strong>Full-Stack / AI Engineer</strong> | Demo: <a href="https://nlgiahuy01112003.github.io/ai-exam-live/">ai-exam-live</a> | Source: <a href="https://github.com/nlgiahuy01112003/ai-exam-live">GitHub</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Next.js</span> <span class="tag">NestJS</span> <span class="tag">Pyodide WebAssembly</span> <span class="tag">Gemini AI Grader</span> <span class="tag">Neon PostgreSQL (SSL)</span> <span class="tag">MathJax</span> <span class="tag">Web Audio API</span>
+                    </div>
+                    <ul>
+                        <li>Built a full-stack mock exam &amp; coding assessment platform for AI Engineers &amp; Data Scientists aligned with SFIA Level 3-4 standards featuring a <strong>1,020+ question bank</strong> (Probability, ML, Transformers, MLOps).</li>
+                        <li>Integrated <strong>Pyodide WebAssembly</strong> for zero-cost in-browser Python/NumPy sandbox execution, <strong>MathJax</strong> for LaTeX equations, and synthesized audio cues via <strong>Native Web Audio API</strong>.</li>
+                        <li>NestJS backend connected to Neon PostgreSQL Serverless with automated <strong>Offline Fallback</strong> and <strong>Gemini AI Code Grader &amp; Smart Mentor</strong> for automated code evaluation.</li>
+                        <li>Authored a comprehensive test suite of <strong>24+ automated API test cases</strong> covering grading algorithms, randomized question shuffling, and AI Smart Mentor insights (100% Passed).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4. OptiBot RAG System (KB-Harvest) -->
+            <div class="row-item">
+                <div class="row-date">06/2026 – 07/2026</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">OptiBot RAG System (KB-Harvest) — Grounded AI Support Assistant &amp; ETL</span>
+                    </div>
+                    <div class="row-meta">
+                        Role: <strong>Python / AI Engineer</strong> | Source: <a href="https://github.com/nlgiahuy01112003/kb-harvest">github.com/nlgiahuy01112003/kb-harvest</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span> <span class="tag">Google Gemini API</span> <span class="tag">BeautifulSoup4</span> <span class="tag">SHA-256 Delta Sync</span> <span class="tag">Docker</span> <span class="tag">GitHub Actions Cron</span>
+                    </div>
+                    <ul>
+                        <li>Automated RAG pipeline: scraped Zendesk Help Center via paginated REST API, engineered a multi-pass HTML-to-Markdown cleaner (saving 40%+ LLM context tokens).</li>
+                        <li>Devised a <strong>SHA-256 delta sync</strong> algorithm that calculates content hashes, uploading only new or modified articles and eliminating <strong>~85% of redundant daily uploads</strong>.</li>
+                        <li>Integrated <strong>Gemini File Search</strong> (512-token chunks with 100-token overlap) for terminal Q&amp;A support answers grounded in official documentation with direct URL citations.</li>
+                        <li>Dockerized single-command execution automated via daily <strong>GitHub Actions cron (02:00 UTC)</strong> archiving run-logs, sync state, and markdown artifacts.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 5. POMI Milk Tea -->
+            <div class="row-item">
+                <div class="row-date">03/2024 – Present</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">POMI Milk Tea — Real-Time Multi-Platform F&amp;B Ordering &amp; AI Inventory System</span>
+                    </div>
+                    <div class="row-meta">
+                        Role: <strong>Backend Developer</strong> | Source: <a href="https://github.com/nlgiahuy01112003/pomi_web">github.com/nlgiahuy01112003/pomi_web</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">React</span> <span class="tag">Express.js</span> <span class="tag">PostgreSQL</span> <span class="tag">Socket.IO</span> <span class="tag">Flutter</span> <span class="tag">Gemini AI &amp; Zalo Alert</span> <span class="tag">Goong.io</span>
+                    </div>
+                    <ul>
+                        <li>Engineered Express TypeScript REST API with bidirectional Socket.IO, synchronizing order states to kitchen displays within 800ms with Idempotency Key <strong>order deduplication</strong>.</li>
+                        <li>Built a <strong>Recipe &amp; Ingredient Inventory Engine</strong> (separating Base drinks vs. Toppings with automated per-cup deduction), integrated a <strong>Gemini AI Assistant</strong> for admins, and automated <strong>Zalo low-stock alerts</strong>.</li>
+                        <li>Integrated Goong.io Map APIs to identify nearest store branches and automatically calculate delivery distances and dynamic fees.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section>
+            <h2 class="section-title">EDUCATION</h2>
+            <div class="row-item">
+                <div class="row-date">09/2021 – 03/2026</div>
+                <div class="row-content">
+                    <div class="row-header" style="flex-direction: column; align-items: flex-start; gap: 2px;">
+                        <span class="row-title">Bachelor of Engineering in Information Technology (Software Engineering)</span>
+                        <span style="font-size: 8.8pt; font-weight: 600; color: var(--muted);">Ho Chi Minh City University of Technology (HUTECH) — GPA: 2.86/4.0</span>
+                    </div>
+                    <ul>
+                        <li><strong>Core Foundations:</strong> Data Structures &amp; Algorithms, Object-Oriented Programming (OOP), Relational Databases, Operating Systems, Computer Networking, Software Architecture, and Automated Testing.</li>
+                        <li><strong>Practical Projects:</strong> Led agile software project teams for web and mobile applications, designing database schemas, API contracts, Git version workflows, and CI/CD automation.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section>
+            <h2 class="section-title">CERTIFICATIONS &amp; LANGUAGES</h2>
+            <div class="row-item">
+                <div class="row-date"></div>
+                <div class="row-content">
+                    <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5px 12px;">
+                        <li><strong>English CEFR B1 — HUTECH:</strong> General English Test at Intermediate Level; issued Dec 2025.</li>
+                        <li><strong>Udemy — The Complete Full-Stack Web Development Bootcamp:</strong> Dr. Angela Yu; React, Node.js, REST API.</li>
+                        <li><strong>Udemy — Flutter Development Bootcamp with Dart:</strong> Dr. Angela Yu; Dart OOP, Flutter State &amp; APIs.</li>
+                        <li><strong>Udemy — 100 Days of Code™ Python Pro Bootcamp:</strong> Dr. Angela Yu; Python OOP, Web Scraping, Automation.</li>
+                        <li><strong>Communication &amp; Teamwork Skills — HUTECH:</strong> Issued Apr 2025; technical problem solving and team alignment.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORK EXPERIENCE -->
+        <section>
+            <h2 class="section-title">WORK EXPERIENCE</h2>
+            <div class="row-item">
+                <div class="row-date">12/2025 – 06/2026</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">IT Helpdesk / Manual QA Tester &amp; System Deployment</span>
+                    </div>
+                    <div class="row-subtitle">EMPOWER SC</div>
+                    <ul>
+                        <li>Operated and supported the <strong>Dimchan All-in-One</strong> POS and retail ecosystem; categorized software, printer, and network issues with a &gt; 95% resolution success rate.</li>
+                        <li>Conducted manual E2E testing across Web/App interfaces; documented reproducible bug tickets and collaborated with development teams to resolve root causes.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row-item">
+                <div class="row-date">08/2025 – 10/2025</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">IT Support &amp; System Deployment Specialist (Project Contract)</span>
+                    </div>
+                    <div class="row-subtitle">HCMC Digital Transformation Center (DXCENTER)</div>
+                    <ul>
+                        <li><strong>Business Process Training (First 2 Weeks):</strong> Recruited for web technical expertise under a municipal digital project; mastered end-to-end workflows of 2 public portals (motcua.tphcm.gov.vn, qlvb.tphcm.gov.vn).</li>
+                        <li><strong>Field Stationed at Binh Khanh Ward (1.5 Months):</strong> Directly trained civil servants and citizens on both portals; handled user inquiries, reproduced edge-case bugs, and dispatched structured bug reports to L2 Developers.</li>
+                        <li><strong>Hardware, Networking &amp; Digital Signatures:</strong> Troubleshot PC hardware, office LAN networks, and configured digital authentication/signatures; fulfilled deployment contract milestones.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

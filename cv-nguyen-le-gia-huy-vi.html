@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Lê Gia Huy - Kỹ sư Phần mềm / Full-Stack & AI Systems</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        :root { --primary: #000; --text: #222; --muted: #555; --bg: #fff; --accent: #0055aa; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; font-size: 8pt; line-height: 1.32; color: var(--text); background: #f0f0f0; display: flex; flex-direction: column; align-items: center; padding: 20px 0; gap: 30px; }
+        .cv-page { width: 210mm; min-height: 297mm; background: #fff; padding: 10mm 13mm; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        @media print { 
+            body { background: white; padding: 0; gap: 0; display: block; font-size: 8pt; line-height: 1.32; } 
+            .cv-page { box-shadow: none; width: 100%; min-height: auto; height: auto; padding: 0; margin: 0; page-break-after: always; overflow: visible; } 
+            .cv-page:last-child { page-break-after: auto; }
+            .header { padding-top: 4px; }
+            .header-left h1 { padding-top: 2px; }
+            .page2-header { padding-top: 4px; }
+            @page { size: A4; margin: 6mm 12mm; }
+            .no-print { display: none !important; }
+        }
+
+        /* Header */
+        .header { display: flex; align-items: center; gap: 12px; margin-bottom: 7px; border-bottom: 1px solid #ccc; padding-top: 2px; padding-bottom: 6px; }
+        .header-photo { width: 68px; height: 68px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd; }
+        .header-left { flex: 1; }
+        .header-left h1 { font-size: 17pt; font-weight: 700; color: var(--primary); text-transform: uppercase; margin: 0 0 2px 0; letter-spacing: 0; line-height: 1.25; }
+        .header-left .title { font-size: 9.8pt; color: var(--text); font-weight: 600; margin-bottom: 2px; }
+        .header-left .website { font-size: 8.2pt; color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+        .header-right { display: flex; flex-direction: column; gap: 2px; font-size: 8.2pt; font-weight: 500; }
+        .contact-item { display: flex; align-items: center; gap: 6px; color: var(--primary); text-decoration: none; white-space: nowrap; }
+        .contact-item i { width: 14px; text-align: center; color: var(--muted); }
+        .header-qr { width: 60px !important; height: 60px !important; border: 1px solid #ddd; padding: 2px; border-radius: 4px; object-fit: contain; }
+
+        /* Sections */
+        section { margin-bottom: 4px; }
+        .section-title { font-size: 9.8pt; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 4px; display: flex; align-items: center; margin-top: 0; page-break-after: avoid; break-after: avoid; }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: #000; margin-left: 10px; }
+
+        /* Top Grid (Summary + Skills) */
+        .top-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 14px; margin-bottom: 5px; page-break-inside: avoid; break-inside: avoid; }
+        .summary-text { text-align: left; line-height: 1.35; font-size: 8.2pt; }
+
+        /* Skills Grid */
+        .skills-table { display: grid; grid-template-columns: auto 1fr; gap: 2.5px 8px; font-size: 8.2pt; line-height: 1.35; }
+        .skills-table strong { color: var(--primary); white-space: nowrap; font-weight: 600; }
+
+        /* Row Layout (for projects/experience/edu) */
+        .row-item { display: flex; margin-bottom: 4px; }
+        .row-item:last-child { margin-bottom: 0; }
+        .row-date { width: 115px; flex-shrink: 0; font-size: 8.2pt; color: var(--muted); padding-top: 1px; white-space: nowrap; }
+        .row-content { flex: 1; }
+        .row-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; page-break-after: avoid; break-after: avoid; }
+        .row-title { font-size: 9.6pt; font-weight: 700; color: var(--primary); }
+        .row-subtitle { font-size: 8.3pt; color: var(--accent); font-weight: 600; margin-bottom: 2px; page-break-after: avoid; break-after: avoid; }
+        .row-meta { font-size: 8pt; color: var(--muted); margin-bottom: 2px; page-break-after: avoid; break-after: avoid; }
+        .row-meta a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .row-desc { text-align: left; margin-bottom: 3px; line-height: 1.35; font-size: 8.2pt; }
+
+        /* Tech Tags */
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 3px; margin: 2px 0 3px 0; page-break-after: avoid; break-after: avoid; }
+        .tag { font-size: 7pt; background: #eee; padding: 1px 6px; border-radius: 3px; color: #444; font-weight: 500; }
+
+        /* Lists */
+        ul { padding-left: 0; list-style: none; margin: 0; }
+        li { margin-bottom: 1px; position: relative; padding-left: 10px; text-align: left; page-break-inside: avoid; break-inside: avoid; line-height: 1.35; }
+        li::before { content: "·"; position: absolute; left: 0; font-weight: bold; }
+        strong { color: var(--primary); font-weight: 600; }
+        code { font-family: inherit; font-size: 0.96em; font-weight: 500; background: #f1f1f1; border-radius: 2px; padding: 0 2px; }
+
+        /* Page 2 Header */
+        .page2-header { font-size: 8.2pt; color: var(--muted); margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; }
+        .page2-header strong { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <!-- Floating Action Bar -->
+    <div class="no-print" style="position: fixed; top: 16px; right: 20px; z-index: 9999; display: flex; gap: 8px; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(8px); padding: 6px 12px; border-radius: 30px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.15);">
+        <a href="/" style="display: flex; align-items: center; gap: 6px; color: #cbd5e1; text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 4px 10px; border-radius: 20px;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#cbd5e1'">
+            <i class="fa-solid fa-arrow-left"></i> Trang chủ
+        </a>
+        <button onclick="window.print()" style="display: flex; align-items: center; gap: 6px; background: #00c851; color: #fff; border: none; font-size: 0.8rem; font-weight: 600; padding: 5px 12px; border-radius: 20px; cursor: pointer;" onmouseover="this.style.background='#00b348'" onmouseout="this.style.background='#00c851'">
+            <i class="fa-solid fa-print"></i> In / Xuất PDF (A4)
+        </button>
+    </div>
+
+    <!-- ==================== PAGE 1 ==================== -->
+    <div class="cv-page">
+        <!-- HEADER -->
+        <header class="header">
+            <img src="profile-photo.jpg" alt="Nguyễn Lê Gia Huy" class="header-photo">
+            <div class="header-left">
+                <h1>NGUYỄN LÊ GIA HUY</h1>
+                <div class="title">Kỹ sư Phần mềm / Lập trình viên Full-Stack &amp; Hệ thống AI</div>
+                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 3px;">
+                    <a href="https://linkedin.com/in/nlgiahuy" class="website" target="_blank"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/nlgiahuy</a>
+                    <a href="https://nguyenlegiahuy-portfolio.vercel.app" class="website" target="_blank"><i class="fa-solid fa-globe"></i> nguyenlegiahuy-portfolio.vercel.app</a>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="tel:+84934893967" class="contact-item"><i class="fa-solid fa-phone"></i> (+84) 934 893 967</a>
+                <a href="https://github.com/nlgiahuy01112003" class="contact-item"><i class="fa-brands fa-github"></i> github.com/nlgiahuy01112003</a>
+                <span class="contact-item"><i class="fa-solid fa-location-dot"></i> TP. Hồ Chí Minh</span>
+                <a href="mailto:Job.nlgiahuy@gmail.com" class="contact-item"><i class="fa-solid fa-envelope"></i> Job.nlgiahuy@gmail.com</a>
+            </div>
+            <img src="qr-github.png" alt="QR Code" class="header-qr">
+        </header>
+
+        <!-- SUMMARY + SKILLS -->
+        <div class="top-grid">
+            <div>
+                <h2 class="section-title">TÓM TẮT NĂNG LỰC</h2>
+                <div class="summary-text">
+                    Kỹ sư Phần mềm (CNTT) tốt nghiệp HUTECH chuyên sâu về <strong>Kiến trúc Full-Stack, Hệ thống phân tán &amp; Tích hợp AI/RAG</strong>.
+                    Kinh nghiệm thực chiến xây dựng Monorepo chuẩn doanh nghiệp, kiến trúc vi dịch vụ (Microservices), kiểm soát tương tranh khóa dòng (Row-level Locking) và ứng dụng di động offline-first.
+                    Làm chủ các công nghệ: <strong>Next.js, NestJS, Flutter/Isar, PostgreSQL (Neon pgvector), Redis, Docker và Gemini API</strong>.
+                    <strong>Sẵn sàng gia nhập kỳ thực tập hoặc vị trí kỹ sư toàn thời gian.</strong>
+                </div>
+            </div>
+            <div>
+                <h2 class="section-title">KỸ NĂNG CHUYÊN MÔN</h2>
+                <div class="skills-table">
+                    <strong>Ngôn ngữ:</strong>
+                    <span>TypeScript, JavaScript, Dart, Python, SQL, C#, Java, HTML5/CSS3</span>
+
+                    <strong>Frontend &amp; Mobile:</strong>
+                    <span>Next.js App Router, React, Flutter, Tailwind CSS, SCSS, Zustand</span>
+                    
+                    <strong>Backend &amp; Database:</strong>
+                    <span>NestJS, Express.js, PostgreSQL (pgvector), Prisma ORM, Redis, Socket.IO</span>
+                    
+                    <strong>AI &amp; DevOps:</strong>
+                    <span>Gemini API (RAG), TensorFlow.js (WebGL), Docker, Nginx, Playwright E2E, CI/CD</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FEATURED PROJECTS (FLAGSHIP) -->
+        <section>
+            <h2 class="section-title">DỰ ÁN TIÊU BIỂU</h2>
+            
+            <!-- 1. HyperGlot -->
+            <div class="row-item">
+                <div class="row-date">03/2026 – Hiện tại</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">HyperGlot — Hệ Sinh Thái Học Tiếng Nhật AI (Turborepo Monorepo)</span>
+                    </div>
+                    <div class="row-meta">
+                        Vai trò: <strong>Lead Full-Stack / Mobile Architect</strong> | Monorepo: <a href="https://github.com/nlgiahuy01112003/HyperGlot">github.com/nlgiahuy01112003/HyperGlot</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Turborepo</span> <span class="tag">Next.js</span> <span class="tag">NestJS</span> <span class="tag">Flutter</span> <span class="tag">Isar DB</span> <span class="tag">Neon pgvector</span> <span class="tag">TensorFlow.js</span> <span class="tag">Playwright</span> <span class="tag">Docker</span>
+                    </div>
+                    <div class="row-desc">
+                        Hệ sinh thái học tiếng Nhật luyện thi JLPT N5-N1 chuẩn doanh nghiệp: Web học viên, Admin Dashboard, Mobile App và Chrome Extension với chiến lược Zero-Cost API.
+                    </div>
+                    <ul>
+                        <li><strong>Kiến trúc Turborepo Monorepo:</strong> Đồng bộ <code>apps/web</code> (Next.js), <code>apps/admin</code> (TanStack Table &amp; Recharts), <code>apps/mobile</code> (Flutter/Riverpod), <code>apps/api</code> (NestJS) và <code>packages/database</code> (Prisma) dùng chung type contracts.</li>
+                        <li><strong>Edge AI &amp; Zero-Cost NLP:</strong> Triển khai nhận diện nét vẽ Kanji bằng TensorFlow.js (tăng tốc phần cứng WebGL) và tách từ kuromoji.js trực tiếp trên trình duyệt, loại bỏ 100% độ trễ và chi phí gọi API đám mây.</li>
+                        <li><strong>Tìm kiếm Ngữ nghĩa &amp; Vector:</strong> Bỏ qua các dịch vụ vector database đắt tiền, sử dụng trực tiếp extension <code>pgvector</code> trên PostgreSQL Serverless (Neon) để truy xuất câu hỏi JLPT ngữ nghĩa.</li>
+                        <li><strong>Mobile Offline-First &amp; SRS Sync:</strong> Thiết kế kho dữ liệu cục bộ Isar DB trên Flutter, cho phép học viên ôn tập thẻ nhớ SRS mượt mà khi mất mạng; đồng bộ trạng thái ngầm khi có Internet.</li>
+                        <li><strong>Chất lượng &amp; An ninh phần mềm:</strong> 60+ ca kiểm thử tự động, Playwright E2E cross-browser, đạt chuẩn tiếp cận WCAG 2.1 AA và kiểm toán an ninh bảo mật theo OWASP Top 10.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2. TechStore (Vanfio) -->
+            <div class="row-item">
+                <div class="row-date">09/2025 – 03/2026</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">TechStore (Vanfio) — Nền Tảng E-Commerce Kiểm Soát Tương Tranh</span>
+                    </div>
+                    <div class="row-meta">
+                        Vai trò: <strong>Full-Stack Developer</strong> | Demo: <a href="https://website-for-aunt.vercel.app">website-for-aunt.vercel.app</a> | Source: <a href="https://github.com/nlgiahuy01112003/techstore">github.com/nlgiahuy01112003/techstore</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Next.js</span> <span class="tag">React</span> <span class="tag">NestJS</span> <span class="tag">PostgreSQL</span> <span class="tag">Prisma ORM</span> <span class="tag">Redis</span> <span class="tag">Socket.IO</span> <span class="tag">MoMo</span> <span class="tag">Docker Compose</span>
+                    </div>
+                    <div class="row-desc">
+                        Nền tảng TMĐT thiết bị công nghệ hoàn chỉnh gồm Storefront Next.js, NestJS REST API, cổng chat real-time Socket.IO và cơ chế bảo vệ tồn kho nghiêm ngặt.
+                    </div>
+                    <ul>
+                        <li><strong>Kiểm soát tương tranh &amp; Khóa dòng:</strong> Áp dụng PostgreSQL <code>SELECT FOR UPDATE</code> row-level locks trong transaction, loại bỏ hoàn toàn lỗi overselling khi hàng trăm người cùng checkout sản phẩm cuối.</li>
+                        <li><strong>Tìm kiếm nội bộ tối ưu (pg_trgm):</strong> Tích hợp PostgreSQL full-text search và trigram similarity với bộ từ đồng nghĩa VI/EN/ZH, loại bỏ chi phí RAM của Meilisearch với độ trễ &lt; 50ms.</li>
+                        <li><strong>Xử lý lũy đẳng (Idempotency) Webhook:</strong> Xác thực MoMo/VNPay webhook bằng chữ ký HMAC-SHA256 kết hợp idempotency key, cam kết không ghi nhận giao dịch kép khi mạng bị gửi lại.</li>
+                        <li><strong>Tối ưu hóa hiệu năng &amp; Bộ đệm:</strong> Triển khai Redis caching cho phiên làm việc và danh mục hot, tăng tốc độ phản hồi API 45%; điểm Google Lighthouse frontend đạt 95+ (CLS = 0).</li>
+                        <li><strong>Bảo vệ đa tầng (Defense-in-Depth):</strong> Cấu hình JWT phiên xoay vòng, TOTP MFA cho quản trị viên, phân quyền RBAC, kiểm duyệt DTO ValidationPipe và Helmet chống Brute-force/DDoS.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== PAGE 2 ==================== -->
+    <div class="cv-page">
+        <div class="page2-header">
+            <span><strong>NGUYỄN LÊ GIA HUY</strong> — Kỹ sư Phần mềm / Full-Stack &amp; AI Systems</span>
+            <span>Trang 2 / 2</span>
+        </div>
+
+        <!-- OTHER CORE PROJECTS -->
+        <section>
+            <h2 class="section-title">DỰ ÁN NỔI BẬT KHÁC</h2>
+
+            <!-- 3. AI Mock Exam Platform -->
+            <div class="row-item">
+                <div class="row-date">08/2026 – 09/2026</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">AI Mock Exam Platform — Hệ Thống Thi Thử AI SFIA L3-4</span>
+                    </div>
+                    <div class="row-meta">
+                        Vai trò: <strong>Full-Stack / AI Engineer</strong> | Demo: <a href="https://nlgiahuy01112003.github.io/ai-exam-live/">ai-exam-live</a> | Source: <a href="https://github.com/nlgiahuy01112003/ai-exam-live">GitHub</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Next.js</span> <span class="tag">NestJS</span> <span class="tag">Pyodide WebAssembly</span> <span class="tag">Gemini AI Grader</span> <span class="tag">Neon PostgreSQL (SSL)</span> <span class="tag">MathJax</span> <span class="tag">Web Audio API</span>
+                    </div>
+                    <ul>
+                        <li>Xây dựng nền tảng thi thử và chấm code AI Engineer / Data Scientist theo chuẩn SFIA Level 3-4 với ngân hàng <strong>1.020+ câu hỏi</strong> chuyên sâu (Toán, Xác suất, ML, Transformers, MLOps).</li>
+                        <li>Tích hợp <strong>Pyodide WebAssembly</strong> chạy sandbox Python/NumPy trực tiếp trên trình duyệt (chi phí server bằng 0), <strong>MathJax</strong> render công thức LaTeX và <strong>Web Audio API</strong> tạo âm thanh không tốn asset ngoài.</li>
+                        <li>Backend NestJS kết nối Neon PostgreSQL Serverless kèm cơ chế <strong>Offline Fallback</strong> tự động và <strong>Gemini AI Code Grader &amp; Smart Mentor</strong> chấm điểm, phân tích bẫy tư duy.</li>
+                        <li>Bộ kiểm thử API tự động toàn diện gồm <strong>24+ ca kiểm thử</strong> bao phủ các luồng chấm điểm, xáo trộn đề và endpoint trợ lý AI Smart Mentor (100% Pass).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4. OptiBot RAG System (KB-Harvest) -->
+            <div class="row-item">
+                <div class="row-date">06/2026 – 07/2026</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">OptiBot RAG System (KB-Harvest) — Trợ Lý AI Có Căn Cứ &amp; ETL Pipeline</span>
+                    </div>
+                    <div class="row-meta">
+                        Vai trò: <strong>Python / AI Engineer</strong> | Source: <a href="https://github.com/nlgiahuy01112003/kb-harvest">github.com/nlgiahuy01112003/kb-harvest</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span> <span class="tag">Google Gemini API</span> <span class="tag">BeautifulSoup4</span> <span class="tag">SHA-256 Delta Sync</span> <span class="tag">Docker</span> <span class="tag">GitHub Actions Cron</span>
+                    </div>
+                    <ul>
+                        <li>Pipeline RAG tự động hóa: thu thập bài viết Zendesk Help Center qua REST API phân trang, làm sạch cấu trúc HTML thành Markdown tinh gọn (tiết kiệm hơn 40% token LLM).</li>
+                        <li>Thuật toán <strong>SHA-256 delta sync</strong> phát hiện chính xác bài viết thêm mới hoặc sửa đổi nội dung, bỏ qua tài liệu không đổi, giảm <strong>~85% lượng upload</strong> hàng ngày.</li>
+                        <li>Tích hợp <strong>Gemini File Search</strong> (chunk 512 token, overlap 100 token) hỗ trợ truy vấn câu hỏi kỹ thuật từ terminal kèm trích dẫn citation nguồn URL chính xác.</li>
+                        <li>Đóng gói Docker một lệnh chạy và tự động hóa toàn diện qua <strong>GitHub Actions cron (02:00 UTC)</strong> lưu trữ artifacts và nhật ký đồng bộ.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 5. POMI Milk Tea -->
+            <div class="row-item">
+                <div class="row-date">03/2024 – Hiện tại</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">POMI Milk Tea — Hệ Thống Đặt Hàng &amp; Quản Trị Kho Nguyên Liệu F&amp;B Thời Gian Thực</span>
+                    </div>
+                    <div class="row-meta">
+                        Vai trò: <strong>Backend Developer</strong> | Source: <a href="https://github.com/nlgiahuy01112003/pomi_web">github.com/nlgiahuy01112003/pomi_web</a>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">React</span> <span class="tag">Express.js</span> <span class="tag">PostgreSQL</span> <span class="tag">Socket.IO</span> <span class="tag">Flutter</span> <span class="tag">Gemini AI &amp; Zalo Alert</span> <span class="tag">Goong.io</span>
+                    </div>
+                    <ul>
+                        <li>Xây dựng REST API Express TypeScript và Socket.IO truyền tải hai chiều, đẩy đơn hàng đến màn hình bếp dưới 800ms cùng cơ chế <strong>khử trùng lặp (Deduplication)</strong> theo Idempotency Key.</li>
+                        <li>Thiết kế hệ thống <strong>Công thức &amp; Tồn kho Nguyên liệu</strong> (phân tách Base Ingredient pha chế &amp; Topping, tự động trừ kho theo từng ly), tích hợp <strong>Trợ lý AI Gemini</strong> và cảnh báo <strong>Zalo tự động</strong> khi sắp hết nguyên liệu.</li>
+                        <li>Tích hợp Goong.io Map API định vị chi nhánh gần nhất và tự động tính toán chính xác chi phí vận chuyển theo khoảng cách thực tế.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section>
+            <h2 class="section-title">HỌC VẤN</h2>
+            <div class="row-item">
+                <div class="row-date">09/2021 – 03/2026</div>
+                <div class="row-content">
+                    <div class="row-header" style="flex-direction: column; align-items: flex-start; gap: 2px;">
+                        <span class="row-title">Kỹ sư Công nghệ thông tin (Chuyên ngành Công nghệ phần mềm)</span>
+                        <span style="font-size: 8.8pt; font-weight: 600; color: var(--muted);">Đại học Công nghệ TP.HCM (HUTECH) — GPA: 2.86/4.0</span>
+                    </div>
+                    <ul>
+                        <li><strong>Nền tảng chuyên môn:</strong> Cấu trúc dữ liệu &amp; giải thuật, lập trình hướng đối tượng (OOP), cơ sở dữ liệu quan hệ, hệ điều hành, mạng máy tính, kiến trúc phần mềm và kiểm thử tự động.</li>
+                        <li><strong>Thực hành &amp; Đồ án:</strong> Dẫn dắt nhiều đồ án phần mềm web/mobile theo quy trình Agile/Scrum, thiết kế database schema, API contracts, kiểm soát phiên bản Git và triển khai CI/CD.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section>
+            <h2 class="section-title">CHỨNG CHỈ &amp; NGOẠI NGỮ</h2>
+            <div class="row-item">
+                <div class="row-date"></div>
+                <div class="row-content">
+                    <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5px 12px;">
+                        <li><strong>Tiếng Anh CEFR B1 — HUTECH:</strong> General English Test at Intermediate Level; cấp 04/12/2025.</li>
+                        <li><strong>Udemy — The Complete Full-Stack Web Development Bootcamp:</strong> Dr. Angela Yu; React, Node.js, REST API.</li>
+                        <li><strong>Udemy — Flutter Development Bootcamp with Dart:</strong> Dr. Angela Yu; Dart OOP, Flutter State Management &amp; APIs.</li>
+                        <li><strong>Udemy — 100 Days of Code™ Python Pro Bootcamp:</strong> Dr. Angela Yu; Python OOP, Web Scraping, Automation.</li>
+                        <li><strong>Kỹ năng Giao tiếp &amp; Làm việc nhóm — HUTECH:</strong> Cấp 16/04/2025; phối hợp nhóm và giải quyết vấn đề kỹ thuật.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORK EXPERIENCE -->
+        <section>
+            <h2 class="section-title">KINH NGHIỆM THỰC TẾ</h2>
+            <div class="row-item">
+                <div class="row-date">12/2025 – 06/2026</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">IT Helpdesk / Kiểm thử thủ công &amp; Triển khai hệ thống</span>
+                    </div>
+                    <div class="row-subtitle">EMPOWER SC</div>
+                    <ul>
+                        <li>Vận hành và hỗ trợ hệ sinh thái <strong>Dimchan All-in-One</strong> cho doanh nghiệp F&amp;B/bán lẻ; tiếp nhận phân loại sự cố phần mềm/máy in/POS với tỷ lệ giải quyết thành công &gt; 95%.</li>
+                        <li>Thực hiện kiểm thử thủ công E2E trên Web/App; ghi nhận điều kiện phát sinh lỗi và lập ticket có cấu trúc phối hợp đội ngũ Dev xử lý triệt để bug.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row-item">
+                <div class="row-date">08/2025 – 10/2025</div>
+                <div class="row-content">
+                    <div class="row-header">
+                        <span class="row-title">Chuyên viên Hỗ trợ IT &amp; Triển khai Hệ thống (Hợp đồng Dự án)</span>
+                    </div>
+                    <div class="row-subtitle">Trung tâm Chuyển đổi số TP.HCM (DXCENTER)</div>
+                    <ul>
+                        <li><strong>Đào tạo nghiệp vụ (2 tuần đầu):</strong> Được tuyển theo dự án cấp tỉnh cho nhân sự am hiểu Web; hoàn thành đào tạo luồng nghiệp vụ 2 cổng thông tin (motcua.tphcm.gov.vn, qlvb.tphcm.gov.vn).</li>
+                        <li><strong>Công tác thực tế tại Phường Bình Khánh (1.5 tháng):</strong> Trực tiếp hướng dẫn cán bộ &amp; người dân sử dụng 2 website; tiếp nhận phản hồi, phân loại lỗi và chuyển giao ticket bug chi tiết cho đội ngũ Dev L2.</li>
+                        <li><strong>Hạ tầng &amp; Xác thực số:</strong> Hỗ trợ thiết bị phần cứng, mạng LAN/Wifi, cài đặt và khắc phục lỗi chữ ký số / xác thực số; hoàn tất bàn giao triển khai dự án cấp tỉnh đúng tiến độ hợp đồng.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
