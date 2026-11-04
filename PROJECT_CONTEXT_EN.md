@@ -14,7 +14,7 @@
   2. *AI & RAG Systems Engineer* (Google Gemini 2.0/2.5 Flash, File Search Store, Pyodide WebAssembly, Kuromoji NLP, pgvector)
   3. *Backend & QA / Systems Engineer* (PostgreSQL, Prisma, Redis, Docker, GitHub Actions CI/CD)
 - **Professional Experience:**
-  - **DXCENTER (Ho Chi Minh City Digital Transformation Center):** IT Support & QA Engineer Intern (Aug 2025 – Oct 2025). Supported network infrastructure, workstation provisioning, public service software testing, and end-user support.
+  - **DXCENTER (Ho Chi Minh City Digital Transformation Center):** IT Support & System Deployment Specialist (Provincial Project Contract, Aug 2025 – Oct 2025). Recruited for web proficiency under a provincial digital government project; completed 2 weeks of administrative portal training followed by 1.5 months stationed on-site at Binh Khanh Ward (user guidance, L2 bug escalation, workstation/LAN maintenance, and digital signature provisioning).
   - **EMPOWER SC:** IT Helpdesk / Manual Tester & System Deployment (12/2025 – 06/2026). Architected backend microservices, payment gateway integrations, and automated AI data pipelines.
 
 ---

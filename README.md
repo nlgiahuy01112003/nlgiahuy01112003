@@ -130,10 +130,15 @@ I approach software engineering with an emphasis on deliberate architectural tra
 - Executed end-to-end manual testing on web and mobile releases; verified hardware compatibility across POS terminals and receipt printers.
 - Logged structured defect tickets with reproduction logs and collaborated with developers to expedite fixes.
 
-### 🏛️ IT Support / Helpdesk Intern
-**HCMC Digital Transformation Center (DXCENTER)** | *Aug 2025 – Oct 2025*
-- Handled technical troubleshooting and ticket triage for high-traffic public administration portals (`motcua.tphcm.gov.vn`, `qlvb.tphcm.gov.vn`), resolving 50+ tickets weekly with a 92%+ First-Contact Resolution rate.
-- Conducted manual functional testing across public-facing forms and approval pipelines under high-concurrency production conditions.
+### 🏛️ IT Support & System Deployment Specialist (Project Contract)
+**HCMC Digital Transformation Center (DXCENTER)** | *08/2025 – 10/2025*
+- Contracted under a provincial digital transformation project deploying web services for grassroots wards/communes.
+- Completed 2 weeks of intensive workflow training on 2 municipal portals: Public Administrative Services (`motcua.tphcm.gov.vn`) and Document Management System (`qlvb.tphcm.gov.vn`).
+- Stationed for 1.5 months on-site at **Binh Khanh Ward Digital Transformation Center**:
+  - Provided direct, hands-on user guidance and training for ward civil servants and citizens on both web platforms.
+  - Resolved end-user inquiries, reproduced edge-case defects, and escalated structured bug reports with logs to Level 2 Developers (Dev L2).
+  - Maintained on-site IT hardware, LAN/network connectivity, and configured digital authentication/signatures for administrative personnel.
+  - Successfully delivered project handover upon completion of the provincial deployment phase.
 
 ---
 

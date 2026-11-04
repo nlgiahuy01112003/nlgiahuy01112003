@@ -14,7 +14,7 @@
   2. *AI & RAG Systems Engineer* (Google Gemini 2.0/2.5 Flash, File Search Store, Pyodide WebAssembly, Kuromoji NLP, pgvector)
   3. *Backend & QA / Systems Engineer* (PostgreSQL, Prisma, Redis, Docker, GitHub Actions CI/CD)
 - **Kinh Nghiệm Thực Tế:**
-  - **DXCENTER (Trung tâm Chuyển đổi số TP.HCM):** IT Support & QA Engineer Intern (08/2025 – 10/2025). Hỗ trợ hạ tầng mạng, quản lý thiết bị đầu cuối, kiểm thử và hỗ trợ người dùng ứng dụng dịch vụ công.
+  - **DXCENTER (Trung tâm Chuyển đổi số TP.HCM):** Chuyên viên Hỗ trợ IT & Triển khai Hệ thống (Nhân viên Hợp đồng Dự án cấp Tỉnh, 08/2025 – 10/2025). Tuyển dụng cho dự án triển khai website dịch vụ công tại cấp xã/phường; đào tạo nghiệp vụ 2 cổng thông tin trong 2 tuần đầu và công tác thực địa 1.5 tháng tại Trung tâm Chuyển đổi số Phường Bình Khánh (hướng dẫn cán bộ/người dân, báo bug cho Dev L2, hỗ trợ thiết bị máy tính, mạng văn phòng và xác thực chữ ký số).
   - **EMPOWER SC:** IT Helpdesk / Manual Tester & System Deployment (12/2025 – 06/2026). Phát triển kiến trúc dịch vụ backend, tích hợp API thanh toán và quy trình làm việc tự động hóa AI.
 
 ---
